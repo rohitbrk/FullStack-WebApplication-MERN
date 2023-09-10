@@ -8,7 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/mern");
+mongoose.connect(process.env.MONGO_URI);
+const PORT = 5000;
 
 app.post("/api/register", async (req, res) => {
   try {
@@ -40,4 +41,4 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("server running on PORT 5000"));
+app.listen(PORT, () => console.log("server running on PORT 5000"));
